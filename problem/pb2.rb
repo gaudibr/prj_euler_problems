@@ -42,3 +42,6 @@ def sumarray(arr)
   return sum
 end
 
+a = fibunderk(4000000)
+b = pairinarray(a)
+sum = sumarray(b)
