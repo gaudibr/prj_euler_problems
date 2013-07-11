@@ -6,7 +6,7 @@ def sumarray(arr)
   return sum
 end
 
-def pb6(n)
+def square_difference(n)
   arr_sum_of_squares = []
   arr_sum = []
   for i in 1..n
@@ -17,7 +17,7 @@ def pb6(n)
   
   puts arr_sum
   
-  return sumarray(arr_sum_of_squares) - sumarray(arr_sum)**2
+  return sumarray(arr_sum)**2 - sumarray(arr_sum_of_squares)
 end
   
     
