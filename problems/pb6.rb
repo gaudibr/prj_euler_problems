@@ -13,11 +13,8 @@ def square_difference(n)
     arr_sum_of_squares.push(i**2)
     arr_sum.push(i)
   end
-  puts arr_sum_of_squares
-  
-  puts arr_sum
   
   return sumarray(arr_sum)**2 - sumarray(arr_sum_of_squares)
 end
   
-    
+puts square_difference(100)
