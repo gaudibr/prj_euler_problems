@@ -15,7 +15,7 @@ end
 def highest_collatz_seq(n)
   highest = 0
   number = n
-  while n < 10000
+  while n < 1000000
     curr = collatz_sequence(n)
     if curr > highest
       highest = curr
@@ -27,5 +27,5 @@ def highest_collatz_seq(n)
   return number
 end
        
-puts highest_collatz_seq(100)
+puts highest_collatz_seq(700000)
     
