@@ -9,7 +9,7 @@ def triangle_number(n)
 end
 
 
-def count_divisors(n)
+def divisors(n)
   p = Prime.prime_division(n)
   factors = [1]
   while !p.empty?
@@ -34,4 +34,15 @@ def count_divisors(n)
 end
 
 
-puts count_divisors(triangle_number(100000000)).length
+def guess(target)
+  last_number = 0
+  sum = 0
+  begin
+    last_number +=1
+    sum +=last_number
+    count = divisors(sum).length
+  end while count < target
+  return sum
+end
+
+puts guess(501)
