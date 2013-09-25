@@ -3,7 +3,7 @@ require 'Prime'
 class NumberProps
 	def initialize(n)
 		@value = n
-		@divisors = init_divisors_bis(n)
+		@divisors = init_divisors_bis2(n)
     @d_of_n = init_d_of_n(@divisors)
 	end
 
@@ -37,6 +37,17 @@ class NumberProps
     end
     return b.uniq
   end
+
+  def init_divisors_bis2(n)
+    
+    
+    divs = [1]
+    2.upto(Math.sqrt(n)) {|i| divs.concat [i, n / i] if n % i == 0}
+    return divs
+
+  end
+
+  
 
   def init_d_of_n(n)
     n.inject {|sum, i| sum + i}
