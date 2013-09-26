@@ -30,7 +30,28 @@ class Integer
   def totient
   	self.totatives.count
   end
+  def magic_number
+  	if self.relatively_prime(10)
+  		n = (1..9).select {|e| (self*e)%10==9}.first
+  		return (self*n+1)/10
+  	else
+  		return nil
+  	end
+  end
+  def length_of_period
+  	if self.relatively_prime(10)
+  		i = 1
+  		until (10**i) % self == 1 do
+  			i += 1
+  		end
+  		return i
+  	else
+  		return nil
+  	end
+  end
 end
 
-puts (2..1000).to_a.select{ |e| e.relatively_prime(10)}.to_s
+a = (2..1000).to_a.select {|e| e.relatively_prime(10)}
+b = a.map {|e| e.length_of_period }
 
+puts a[b.rindex(b.max)]
