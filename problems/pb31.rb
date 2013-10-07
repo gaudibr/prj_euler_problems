@@ -37,7 +37,7 @@ def pb31
 
   puts possibilities
 end
-AMOUNT = 20000
+AMOUNT = 200000
 COINS =  Hash[(1..8).to_a.zip [1,2,5,10,20,50,100,200]]
 def pb31b
   puts ways(AMOUNT,8)
@@ -92,6 +92,6 @@ end
 
 #puts Benchmark.measure {pb31}
 #puts Benchmark.measure {pb31b}
-puts Benchmark.measure {pb31c}
+#puts Benchmark.measure {pb31c}
 puts Benchmark.measure {pb31d}
 
