@@ -31,17 +31,36 @@ def pb46
 end
 
 PRIMES = []
-def prime_generation
-  Prime.each(10000) {|prime|
+def prime_generation n
+  Prime.each(n) {|prime|
     PRIMES << prime
   }
 end
 
-def pb46b
 
+def pb46b
+  limit = 10000
+  prime_generation limit
+  (100..limit).each { |n|
+    exception = true
+    if n.odd? && !n.prime?
+      PRIMES.each { |prime|
+        break if prime > n
+        if (n-prime).double_square?
+          exception = false
+          break
+        end
+      }
+      if exception==true
+        puts n
+        break
+      end
+    end
+  }
 end
 
-puts Benchmark.measure{prime_generation}
+#puts Benchmark.measure{prime_generation}
 
-puts 8.double_square?, 9.double_square?, 16.double_square?
-puts Benchmark.measure{pb46}
+#puts 8.double_square?, 9.double_square?, 16.double_square?
+puts PRIMES
+puts Benchmark.measure{pb46b}
