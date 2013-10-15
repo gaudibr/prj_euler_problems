@@ -62,4 +62,16 @@ def pbx
   }
 end
 
+def pbxb
+
+  digits = []
+  (0..2).each { |repeated_digit|
+    digits = []
+    3.times do
+      repeated_digit << digits
+    end
+
+  }
+end
+
 puts Benchmark.measure { pbx }
