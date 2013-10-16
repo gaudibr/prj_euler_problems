@@ -39,6 +39,7 @@ describe 'hand evaluation' do
   it 'should recognise a flush' do
     #To change this template use File | Settings | File Templates.
     PokerHand.new(@flush).is_flush?.should == true
+    PokerHand.new(@high_card).is_flush?.should == false
   end
 
   it 'should recognise a straight' do
@@ -83,7 +84,7 @@ describe 'hand evaluation' do
 
   it 'should detect a high card' do
     PokerHand.new(@high_card).is_high_card?.should == true
-    PokerHand.new(@pair).is_high_card?.should == true
+    PokerHand.new(@pair).is_high_card?.should == false
     PokerHand.new(@double_pair).is_high_card?.should == false
     PokerHand.new(@straight).is_high_card?.should == false
     PokerHand.new(@flush).is_high_card?.should == false
@@ -97,6 +98,7 @@ describe 'hand evaluation' do
     PokerHand.new(@four_oak).define_hand.should == '4K'
     PokerHand.new(@three_oak).define_hand.should == '3K'
     PokerHand.new(@pair).define_hand.should == '1P'
+    PokerHand.new(@full_house).define_hand.should == 'FH'
   end
 end
 
