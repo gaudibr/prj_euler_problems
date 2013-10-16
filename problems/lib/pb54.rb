@@ -43,7 +43,7 @@ class PokerHand
     raise IllegalHandError if cards.length !=5
     @face_counts = Hash.new
     @suit_counts = Hash.new
-    @cards = cards.map{|e| Card.new(e)}
+    #@cards = cards.map{|e| Card.new(e)}
     @value = []
 
     Card.faces.each {|face| @face_counts[face] = 0}
@@ -54,14 +54,16 @@ class PokerHand
       suit = card[1]
       @face_counts[face] += 1; @suit_counts[suit]+=1
     }
+
+    define_hand
   end
 
   def <=>(another)
-    (0..@value.length).each { |i|
-      result =  self.value[i] <=> another.value[i]
-      return result unless result==0
+    result = 0
+    self.value.each_index { |i|
+      return self.value[i] <=> another.value[i] if self.value[i] != another.value[i]
     }
-    #@@results.index(self.define_hand) <=> @@results.index(another.define_hand)
+    result
   end
 
   def highest_face_value
@@ -159,11 +161,11 @@ end
 
 
 def pbx
-  poker_file = File.new("D:/ToBeSaved/s27 Documents/GitHub/prj_euler_problems/problems/lib/poker.txt", "r")
+  poker_file = File.new("poker.txt", "r")
   plays = poker_file.readlines
   puts plays.map{|play| play.split(' ')}.count{|cards| PokerHand.new(cards.first(5)) > PokerHand.new(cards.last(5))}
-  puts plays.map{|play| play.split(' ')}.count{|cards| PokerHand.new(cards.first(5)) == PokerHand.new(cards.last(5))}
+  #puts plays.map{|play| play.split(' ')}.count{|cards| PokerHand.new(cards.first(5)) == PokerHand.new(cards.last(5))}
 
 end
 
-#puts Benchmark.measure { pbx }
+puts Benchmark.measure { pbx }
